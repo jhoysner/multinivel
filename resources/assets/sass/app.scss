@@ -1,0 +1,19 @@
+
+// Fonts
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+//fonts
+@import url('//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic');
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//login section
+@import "./login";
+
+// Material
+@import "node_modules/vue-material/src/core/stylesheets/core";
