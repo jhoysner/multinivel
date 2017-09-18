@@ -1652,27 +1652,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Main.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SideNav_vue__ = __webpack_require__("./resources/assets/js/components/SideNav.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SideNav_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__SideNav_vue__);
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        SideNav: __WEBPACK_IMPORTED_MODULE_0__SideNav_vue___default.a
-    }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/SideNav.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1717,11 +1696,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log('Closed: ' + ref);
         }
     },
+    props: ['user'],
     data: function data() {
         return {
-            name: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].application.name
+            application_name: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].application.name,
+            name: JSON.parse(this.user).name,
+            avatar: JSON.parse(this.user).avatar
         };
-    }
+    },
+
+    mounted: function mounted() {
+        this.$nextTick(function () {});
+    },
+    components: {}
 });
 
 /***/ }),
@@ -4118,7 +4105,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n.profile-user{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32408,7 +32395,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('md-icon', [_vm._v("menu")])], 1), _vm._v(" "), _c('h2', {
     staticClass: "md-title"
-  }, [_vm._v(_vm._s(_vm.name))])], 1), _vm._v(" "), _c('md-sidenav', {
+  }, [_vm._v(_vm._s(_vm.application_name))])], 1), _vm._v(" "), _c('md-sidenav', {
     ref: "leftSidenav",
     staticClass: "md-left",
     on: {
@@ -32420,36 +32407,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('md-toolbar', {
-    staticClass: "md-large profile-user"
+    staticClass: "md-large flex-vertical-center"
   }, [_c('div', {
-    staticClass: "md-toolbar-container"
+    staticClass: "md-toolbar-container flex-vertical-center"
   }, [_c('md-avatar', {
-    staticClass: "md-avatar-icon md-large"
-  }, [_c('md-icon', [_vm._v("home")])], 1)], 1), _vm._v(" "), _c('span', {
+    staticClass: "md-large"
+  }, [_c('img', {
+    attrs: {
+      "src": _vm.avatar,
+      "alt": _vm.name
+    }
+  })]), _vm._v(" "), _c('span', {
     staticClass: "md-subheading"
-  }, [_vm._v("Subheading")])])], 1)], 1)
+  }, [_vm._v(_vm._s(_vm.name))])], 1)])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-1806e1e0", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4ce42125\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Main.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('SideNav')
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4ce42125", module.exports)
   }
 }
 
@@ -43048,12 +43024,7 @@ module.exports = function(module) {
 /***/ }),
 
 /***/ "./resources/assets/js/app.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material_dist_vue_material_css__ = __webpack_require__("./node_modules/vue-material/dist/vue-material.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_material_dist_vue_material_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_material_dist_vue_material_css__);
+/***/ (function(module, exports, __webpack_require__) {
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -43075,19 +43046,19 @@ window.Vue.use(VueMaterial);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var mainComponent = Vue.component('main-component', __webpack_require__("./resources/assets/js/components/Main.vue"));
+var sideNav = Vue.component('side-nav', __webpack_require__("./resources/assets/js/components/SideNav.vue"));
 var loginComponent = Vue.component('login-component', __webpack_require__("./resources/assets/js/components/Login.vue"));
 
 var app = new Vue({
   el: '#app',
   components: {
-    mainComponent: mainComponent,
-    loginComponent: loginComponent
+    loginComponent: loginComponent,
+    sideNav: sideNav
   }
 });
 
 //Materialize
-
+__webpack_require__("./node_modules/vue-material/dist/vue-material.css");
 
 /***/ }),
 
@@ -43180,47 +43151,6 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-0a86faa6", Component.options)
   } else {
     hotAPI.reload("data-v-0a86faa6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/Main.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Main.vue"),
-  /* template */
-  __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4ce42125\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Main.vue"),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Applications/MAMP/htdocs/project-x/resources/assets/js/components/Main.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Main.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4ce42125", Component.options)
-  } else {
-    hotAPI.reload("data-v-4ce42125", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

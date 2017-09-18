@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -19,16 +18,16 @@ window.Vue.use(VueMaterial)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var mainComponent = Vue.component('main-component', require('./components/Main.vue'));
+var sideNav = Vue.component('side-nav', require('./components/SideNav.vue'));
 var loginComponent = Vue.component('login-component', require('./components/Login.vue'));
 
 const app = new Vue({
     el: '#app',
     components: {
-        mainComponent,
-        loginComponent
+        loginComponent,
+        sideNav
     }
 });
 
 //Materialize
-import 'vue-material/dist/vue-material.css'
+require('vue-material/dist/vue-material.css');

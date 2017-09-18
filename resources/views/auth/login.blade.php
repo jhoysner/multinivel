@@ -4,7 +4,7 @@
 <div class="container login-section">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-            <span class="md-display-1">{{ config('app.name', 'Laravel') }}</span>
+            <span class="md-display-1">Ingreso de usuario</span>
         </div>
     </div>
     <div class="row">
@@ -34,6 +34,12 @@
                     <md-button href="{{ route('password.request') }}" class="md-raised md-warn">Olvidaste tu contraseña?</md-button>
                 </md-toolbar>
             </form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-button href="{{ url('/auth/facebook') }}">Inicia sesión con facebook <i class="fa fa-facebook"></i></md-button>
+                    <md-button href="{{ route('register') }}">No tienes cuenta? registrate!</md-button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

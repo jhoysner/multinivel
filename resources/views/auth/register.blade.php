@@ -1,77 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="container login-section">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <span class="md-display-1">Registro de usuario</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <form action="{{ route('register') }}" method="POST">
+                    {{ csrf_field() }}
+                    <md-input-container class="{{ $errors->has('name') ? 'md-input-invalid' : '' }}">
+                        @if ($errors->has('name'))
+                            <label>{{ $errors->first('name') }}</label>
+                        @else
+                            <label>Nombre de usuario</label>
+                        @endif
+                        <md-input name="name" value="{{ old('name') }}" maxlength="30" required></md-input>
+                    </md-input-container>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                    <md-input-container class="{{ $errors->has('email') ? 'md-input-invalid' : '' }}">
+                        @if ($errors->has('email'))
+                            <label>{{ $errors->first('email') }}</label>
+                        @else
+                            <label>Correo Electrónico</label>
+                        @endif
+                        <md-input name="email" type="email" maxlength="30" value="{{ old('email') }}" required></md-input>
+                    </md-input-container>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                    <md-input-container md-has-password class="{{ $errors->has('password') ? 'md-input-invalid' : '' }}">
+                        @if ($errors->has('password'))
+                            <label>{{ $errors->first('password') }}</label>
+                        @else
+                            <label>Contraseña</label>
+                        @endif
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                        <md-input name="password" type="password" maxlength="30" required></md-input>
+                    </md-input-container>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <md-input-container md-has-password class="{{ $errors->has('password') ? 'md-input-invalid' : '' }}">
+                        @if ($errors->has('password'))
+                            <label for="password-confirm">{{ $errors->first('password') }}</label>
+                        @else
+                            <label for="password-confirm">Confirmar Contraseña</label>
+                        @endif
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        <md-input id="password-confirm" name="password_confirmation" type="password" maxlength="30" required></md-input>
+                    </md-input-container>
+                    <md-toolbar class="md-transparent">
+                        <md-button type="submit" class="md-raised md-primary">Registrarme</md-button>
+                        <md-button href="{{ route('password.request') }}" class="md-raised md-warn">Olvidaste tu contraseña?</md-button>
+                        <md-button href="{{ url('/auth/facebook') }}">Registrate con facebook <i class="fa fa-facebook"></i></md-button>
+                    </md-toolbar>
+                </form>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <md-button href="{{ route('login') }}">Ya tienes una cuenta? Inicia sesión!</md-button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

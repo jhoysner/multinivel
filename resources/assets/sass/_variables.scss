@@ -36,3 +36,10 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+.flex-vertical-center{
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+}

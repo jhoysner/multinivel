@@ -4,16 +4,16 @@
             <md-button class="md-icon-button" @click="toggleLeftSidenav">
             <md-icon>menu</md-icon>
             </md-button>
-            <h2 class="md-title">{{ name }}</h2>
+            <h2 class="md-title">{{ application_name }}</h2>
         </md-toolbar>
         <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
-            <md-toolbar class="md-large profile-user">
-                <div class="md-toolbar-container">
-                    <md-avatar class="md-avatar-icon md-large">
-                        <md-icon>home</md-icon>
+            <md-toolbar class="md-large flex-vertical-center">
+                <div class="md-toolbar-container flex-vertical-center">
+                    <md-avatar class="md-large">
+                        <img :src="avatar" :alt="name">
                     </md-avatar>
+                    <span class="md-subheading">{{ name }}</span>
                 </div>
-                <span class="md-subheading">Subheading</span>
             </md-toolbar>
         </md-sidenav>
     </div>
@@ -24,31 +24,34 @@ import config from '../config';
     export default {
         methods: {
             toggleLeftSidenav() {
-            this.$refs.leftSidenav.toggle();
+                this.$refs.leftSidenav.toggle();
             },
             toggleRightSidenav() {
-            this.$refs.rightSidenav.toggle();
+                this.$refs.rightSidenav.toggle();
             },
             open(ref) {
-            console.log('Opened: ' + ref);
+                console.log('Opened: ' + ref);
             },
             close(ref) {
-            console.log('Closed: ' + ref);
+                console.log('Closed: ' + ref);
             }
         },
+        props: ['user'],
         data() {
             return {
-                name: config.application.name
+                application_name: config.application.name,
+                name: JSON.parse(this.user).name,
+                avatar: JSON.parse(this.user).avatar
             }
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+            })
+        },
+        components: {
         }
     };
 </script>
 
 <style>
-    .profile-user{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 </style>
