@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Laravel\Socialite\SocialiteServiceProvider::class,
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
     ],
 
     /*
@@ -228,6 +229,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
     ],
 
 ];
