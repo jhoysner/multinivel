@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller{
 
@@ -94,5 +95,24 @@ class AuthController extends Controller{
 
         // all good so return the token
         return response()->json(compact('token'));
+    }
+
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 403);
+        }
+
+        return User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
     }
 }
