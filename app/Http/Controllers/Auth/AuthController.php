@@ -68,8 +68,7 @@ class AuthController extends Controller{
             'avatar'   => $user->avatar,
             'avatar_original' => $user->avatar_original,
             'profileUrl' => $user->profileUrl,
-            'token'     => $user->token,
-            'password'  => bcrypt('demo123')
+            'token'     => $user->token
         ]);
     }
 
