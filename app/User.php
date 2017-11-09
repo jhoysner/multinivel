@@ -16,16 +16,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'middle_name',
+        'last_name',
+        'full_name',
         'email',
         'password',
-        'provider',
-        'provider_id',
-        'gender',
-        'link',
-        'avatar',
-        'avatar_original',
-        'profileUrl',
-        'token'
+        'phone_number',
+        'level_id',
+        'token',
     ];
 
     /**
@@ -36,4 +34,43 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function cooperative_level()
+    {
+       return $this->belongsTo('App\CooperativeLevel','level_id');
+    }
+
+
+    public function social_account()
+    {
+        return $this->hasOne('App\SocialAccount');
+    }
+
+    public function account_confirmation()
+    {
+        return $this->hasOne('App\AccountConfirmation');
+    }
+
+    public function payouts()
+    {
+        return $this->hasMany('App\Payout');
+    }
+
+    public function countries()
+    {
+        return $this->belongsToMany('App\Country');
+    }
+
+
+    public function sponsor()
+    {
+        return $this->hasMany('App\SponsorFollower','sponsor_id', 'id');
+    }
+
+    public function follower()
+    {
+        return $this->hasOne('App\SponsorFollower','follower_id','id');
+    }
+
 }
