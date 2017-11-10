@@ -27,4 +27,9 @@ class Country extends Model
         return $this->belongsToMany('App\User');
     }
 
+    public static function cuntryRandom(){
+
+        return  Country::all()->random()->id;
+    }
+
 }

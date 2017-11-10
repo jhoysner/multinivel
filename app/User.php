@@ -73,4 +73,6 @@ class User extends Authenticatable
         return $this->hasOne('App\SponsorFollower','follower_id','id');
     }
 
+
+
 }

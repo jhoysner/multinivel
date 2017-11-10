@@ -38,4 +38,8 @@ class SponsorFollower extends Model
 
     }
 
+    public static function SponsorFollowrRandom(){
+
+        return SponsorFollower::all()->random();
+    }
 }
