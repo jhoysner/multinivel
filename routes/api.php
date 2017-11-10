@@ -13,11 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::prefix('v1')->group(function () {
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-    });
+// Route::prefix('v1')->group(function () {
+//     Route::middleware('auth:api')->get('/user', function (Request $request) {
+//         return $request->user();
+//     });
 
-    Route::post('/login', 'Auth\AuthController@authenticate');
-    Route::post('/register', 'Auth\AuthController@register');
-});
+//     Route::post('/login', 'Auth\AuthController@authenticate');
+//     Route::post('/register', 'Auth\AuthController@register');
+// });
+
+
+Route::get('/test/user/{id}', 'Test\TestController@user');
+Route::get('/test/country/{id}', 'Test\TestController@country');
+Route::get('/test/cooperative/{id}', 'Test\TestController@cooperative');
+Route::get('/test/payout/{id}', 'Test\TestController@payout');
+Route::get('/test/sponsorfollower/{id}', 'Test\TestController@sponsorfollower');
