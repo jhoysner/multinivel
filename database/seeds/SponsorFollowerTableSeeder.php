@@ -15,68 +15,8 @@ class SponsorFollowerTableSeeder extends Seeder
     public function run()
     {
 
-        SponsorFollower::create([
-            'sponsor_id' => 1,
-             'follower_id' => 2,
-         ]);
-
-
-        Payment::create([
-
-            'follower_id' =>  2,
-            'sponsor_id' =>    1,
-            'level_id' =>    1,
-            'payment_amount' => 5,
-            'payment_confirmation' =>  mt_rand(0, 127),
-        ]);
-
-
-        SponsorFollower::create([
-            'sponsor_id' => 2,
-             'follower_id' => 3,
-        ]);
-
-
-        Payment::create([
-
-            'follower_id' =>  3,
-            'sponsor_id' =>    2,
-            'level_id' =>    2,
-            'payment_amount' => 5,
-            'payment_confirmation' =>  mt_rand(0, 127),
-        ]);
-
-        SponsorFollower::create([
-            'sponsor_id' => 3,
-             'follower_id' => 4,
-        ]);
-
-
-        Payment::create([
-
-            'follower_id' =>  4,
-            'sponsor_id' =>    2,
-            'level_id' =>    3,
-            'payment_amount' => 5,
-            'payment_confirmation' =>  mt_rand(0, 127),
-        ]);
-
-        SponsorFollower::create([
-            'sponsor_id' => 4,
-             'follower_id' => 5,
-        ]);
-
-        Payment::create([
-
-            'follower_id' =>  5,
-            'sponsor_id' =>    4,
-            'level_id' =>    4,
-            'payment_amount' => 5,
-            'payment_confirmation' =>  mt_rand(0, 127),
-        ]);
-
-
-        factory(User::class, 3)->create()->each(
+        // Seeder para el primer nivel
+        factory(User::class, 4)->create()->each(
             function($u){
 
                 factory(SponsorFollower::class)->create([
@@ -97,10 +37,8 @@ class SponsorFollowerTableSeeder extends Seeder
             }
         );
 
-
-
-
-        factory(User::class, 7)->create()->each(
+        // Seeder para el segundo nivel
+        factory(User::class, 4)->create()->each(
             function($u){
 
                 factory(SponsorFollower::class)->create([
@@ -108,19 +46,29 @@ class SponsorFollowerTableSeeder extends Seeder
                     'sponsor_id' => 2,
                     'follower_id' =>  $u->id,
                 ]);
+            }
+        )->each(
 
-                factory(Payment::class)->create([
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
 
-                    'follower_id' =>  $u->id,
-                    'sponsor_id' =>    2,
-                    'level_id' =>    2,
-                    'payment_amount' => 5,
-                    'payment_confirmation' =>  mt_rand(0, 127),
-                ]);
+                        $user = SponsorFollower::where('sponsor_id', 2)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
             }
         );
 
-        factory(User::class, 63)->create()->each(
+        // //Seeder para el tercer nivel
+
+        factory(User::class, 4)->create()->each(
             function($u){
 
                 factory(SponsorFollower::class)->create([
@@ -128,19 +76,104 @@ class SponsorFollowerTableSeeder extends Seeder
                     'sponsor_id' => 3,
                     'follower_id' =>  $u->id,
                 ]);
+            }
+        )->each(
 
-                factory(Payment::class)->create([
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
 
-                    'follower_id' =>  $u->id,
-                    'sponsor_id' =>    3,
-                    'level_id' =>    3,
-                    'payment_amount' => 5,
-                    'payment_confirmation' =>  mt_rand(0, 127),
-                ]);
+                        $user = SponsorFollower::where('sponsor_id', 3)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 3)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 3)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 3)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 3)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
             }
         );
 
-        factory(User::class, 255)->create()->each(
+        //Cuarto Nivel
+        factory(User::class, 4)->create()->each(
             function($u){
 
                 factory(SponsorFollower::class)->create([
@@ -148,17 +181,422 @@ class SponsorFollowerTableSeeder extends Seeder
                     'sponsor_id' => 4,
                     'follower_id' =>  $u->id,
                 ]);
+            }
+        )->each(
 
-                factory(Payment::class)->create([
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
 
-                    'follower_id' =>  $u->id,
-                    'sponsor_id' =>    4,
-                    'level_id' =>    4,
-                    'payment_amount' => 5,
-                    'payment_confirmation' =>  mt_rand(0, 127),
-                ]);
+                        $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[0]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[1]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[2]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
+            }
+        )->each(
+
+            function($u){
+                factory(User::class, 4)->create()->each(
+                    function($u, $key) {
+
+
+                            $user = SponsorFollower::where('sponsor_id', 4)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            $user = SponsorFollower::where('sponsor_id',$user[3]->follower_id)->get();
+                            factory(SponsorFollower::class)->create([
+
+                                'sponsor_id' => $user[$key]->follower_id,
+                                'follower_id' =>  $u->id,
+                            ]);
+                    }
+
+                );
+
             }
         );
+
 
     }
 }

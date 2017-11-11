@@ -65,12 +65,12 @@ class User extends Authenticatable
 
     public function sponsor()
     {
-        return $this->hasMany('App\SponsorFollower','sponsor_id', 'id');
+        return $this->hasOne('App\SponsorFollower','follower_id', 'id');
     }
 
-    public function follower()
+    public function followers()
     {
-        return $this->hasOne('App\SponsorFollower','follower_id','id');
+        return $this->hasMany('App\SponsorFollower','sponsor_id','id');
     }
 
 
