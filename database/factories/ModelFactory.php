@@ -14,9 +14,10 @@ use App\User;
 |
 */
 $autoIncrement = autoIncrement();
+$autoincremento = autoIncremento();
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) use ($autoIncrement) {
+$factory->define(App\User::class, function (Faker\Generator $faker) use ($autoIncrement , $autoincremento) {
     static $password;
     $autoIncrement->next();
 
@@ -28,7 +29,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) use ($autoIn
         'full_name' => $faker->firstName.' '.$faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'phone_number'=> $faker->phoneNumber,
-        'level_id'=> CooperativeLevel::all()->random()->id,
+        'level_id'=>  1,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -57,6 +58,15 @@ $factory->define(App\Payment::class, function (Faker\Generator $faker) {
 function autoIncrement()
 {
     for ($i = 5; $i < 1000; $i++) {
+        yield $i;
+    }
+}
+
+
+
+function autoIncremento()
+{
+    for ($i = 0; $i < 1000; $i++) {
         yield $i;
     }
 }

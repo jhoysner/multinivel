@@ -18,7 +18,7 @@ class TestController extends Controller
    public function user($id)
     {
 
-        $data  = User::with('countries', 'account_confirmation','payouts','cooperative_level','sponsor','follower','social_account')->get()->find($id);
+        $data  = User::with('countries', 'account_confirmation','payouts','cooperative_level','sponsor','followers','social_account')->get()->find($id);
 
         return $data;
     }
