@@ -23,3 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 Route::get('/logout', 'Auth\AuthController@finishSession');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

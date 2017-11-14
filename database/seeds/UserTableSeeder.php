@@ -16,26 +16,26 @@ class UserTableSeeder extends Seeder
 
 
         User::create([
-                'name' => 'Jhoysner',
-                'middle_name'=> 'Gregorio',
-                'last_name' => 'Corona',
-                'full_name' => 'Jhoysner Gregorio Corona',
+                'name' => 'Pedro',
+                'middle_name'=> 'Manuel',
+                'last_name' => 'Perez',
+                'full_name' => 'Pedron Manuel Perez',
                 'phone_number' => '0416-123456',
                 'level_id' => 1,
-                'email' => 'jhoysner@gmail.com',
+                'email' => 'Pedro@gmail.com',
                 'password' => bcrypt('123456'),
 
             ])->countries()->attach(Country::cuntryRandom());
 
 
         User::create([
-                'name' => 'Ronny',
-                'middle_name' => 'Ronny',
-                'last_name' => 'Freites',
-                'full_name' => 'Ronny Ronny Freites',
+                'name' => 'Jesus',
+                'middle_name' => 'Daniel',
+                'last_name' => 'Gonzales',
+                'full_name' => 'Jesus Daniel Daniel',
                 'phone_number' => '0416-654321',
                 'level_id' => 2,
-                'email' =>  'Ronny@gmail.com',
+                'email' =>  'jesus@gmail.com',
                 'password' => bcrypt('123456'),
 
             ])->countries()->attach(Country::cuntryRandom());
