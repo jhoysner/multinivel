@@ -9,9 +9,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
  * @SWG\Swagger(
- *   basePath="/project-start.app",
+ *   basePath=L5_SWAGGER_BASE_PATH,
  *   @SWG\Info(
- *     title="Cooperative",
+ *     title=L5_SWAGGER_TITLE_API,
  *     version="1.0.0"
  *   )
  * )

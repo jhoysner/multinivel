@@ -4,7 +4,7 @@
         "title": "Cooperative",
         "version": "1.0.0"
     },
-    "basePath": "/project-start.app",
+    "basePath": "JHOYSNER.COM",
     "paths": {
         "/test/user/{userId}": {
             "get": {

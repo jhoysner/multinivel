@@ -193,5 +193,7 @@ return [
      */
     'constants' => [
         'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+        'L5_SWAGGER_BASE_PATH' => env('L5_SWAGGER_BASE_PATH'),
+        'L5_SWAGGER_TITLE_API' => env('L5_SWAGGER_TITLE_API'),
     ],
 ];
