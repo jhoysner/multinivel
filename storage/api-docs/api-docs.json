@@ -1,0 +1,136 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cooperative",
+        "version": "1.0.0"
+    },
+    "basePath": "JHOYSNER.COM",
+    "paths": {
+        "/test/user/{userId}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Find userId Relation",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target User.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/test/country/{countryId}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Find countryId Relation",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target country.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/test/cooperative/{cooperativeId}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Find cooperative Relation",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target cooperative.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/test/payout/{payoutId}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Find payout Relation",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target payout.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/test/sponsorfollower/{sponsorfollowerId}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Find sponsorfollower Relation",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target sponsorfollower.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

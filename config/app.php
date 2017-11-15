@@ -180,6 +180,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
         TCG\Voyager\VoyagerServiceProvider::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
     ],
 
     /*
