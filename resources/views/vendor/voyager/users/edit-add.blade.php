@@ -9,7 +9,7 @@
             <span class="glyphicon glyphicon-pencil"></span>&nbsp;
             Edit
         </a>
-                <a href="http://project-start.app/admin/personal" class="btn btn-warning">
+                <a href="http://project-start.app/admin/users" class="btn btn-warning">
             <span class="glyphicon glyphicon-list"></span>&nbsp;
             Return to List
         </a>

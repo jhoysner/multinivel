@@ -33,7 +33,7 @@
                     <td>{{$user->phone_number}}</td>
                     <td>{{$user->cooperative_level->level_name}}</td>
                     <td>
-                       <a href="{{url('admin/personal/'.$user->id)}}" class="btn btn-sm btn-warning">View</a>
+                       <a href="{{url('admin/users/'.$user->id)}}" class="btn btn-sm btn-warning">View</a>
                        <a href="" class="btn btn-sm btn-info">Edit</a>
                        <a href="" class="btn btn-sm btn-danger">Delete</a>
 

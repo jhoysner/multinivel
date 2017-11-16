@@ -18,7 +18,7 @@ class UserController extends BaseVoyagerAuthController{
     {
         $users = User::paginate(15);
         // dd($users);
-        return view('vendor.voyager.sponsor-followers.browse',compact('users'));
+        return view('vendor.voyager.users.browse',compact('users'));
     }
 
     /**
@@ -56,7 +56,7 @@ class UserController extends BaseVoyagerAuthController{
 
 
         }
-        return view('vendor.voyager.sponsor-followers.edit-add',compact('user'));
+        return view('vendor.voyager.users.edit-add',compact('user'));
     }
 
     /**
