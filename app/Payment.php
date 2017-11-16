@@ -20,7 +20,7 @@ class Payment extends Model
 
     public function cooperative_level()
     {
-        return $this->belongsTo('App\CooperativeLevel');
+        return $this->belongsTo('App\CooperativeLevel','level_id','id');
     }
 
 

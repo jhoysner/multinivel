@@ -73,7 +73,15 @@ class User extends \TCG\Voyager\Models\User
         return $this->hasMany('App\SponsorFollower','sponsor_id','id');
     }
 
+    public static function exisPaymentFollower($user){
 
+        foreach ($user->followers as  $follower) {
+            if ($follower->payment_sponsor) {
+                return true;
+            }
+            return false;
+        }
+    }
 
 }
 

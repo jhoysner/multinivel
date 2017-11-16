@@ -27,4 +27,7 @@ Route::get('/logout', 'Auth\AuthController@finishSession');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Route::get('personal', ['uses' => 'Voyager\UserController@index']);
+    // Route::get('sponsor-followers/{id}', ['uses' => 'Voyager\UserController@show']);
 });

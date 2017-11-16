@@ -28,13 +28,13 @@ class SponsorFollower extends Model
 
     public function payment_sponsor()
     {
-        return $this->hasMany('App\Payment','sponsor_id','sponsor_id');
+        return $this->hasOne('App\Payment','follower_id','follower_id');
     }
 
-    public function payment_follower()
+    public function payment_followers()
     {
 
-       return $this->hasMany('App\Payment','follower_id','follower_id');
+       return $this->hasMany('App\Payment','sponsor_id','sponsor_id');
 
     }
 
@@ -42,4 +42,5 @@ class SponsorFollower extends Model
 
         return SponsorFollower::all()->random();
     }
+
 }
