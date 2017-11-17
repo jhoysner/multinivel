@@ -73,7 +73,7 @@
                                         <label style="font-size:20px"><b>Sponsor:</b>
 
                                             @if ($user->sponsor)
-                                                {{$user->sponsor->id}}
+                                                <a href="{{url('admin/users/'.$user->sponsor->sponsor_id)}}">{{$user->sponsor->sponsor_id}}</a>
                                             @else
                                                  No Have
                                             @endif
@@ -101,7 +101,7 @@
                                                  <tbody>
                                                     @foreach ($user->followers as $follower)
                                                         <tr>
-                                                            <td><a href="{{url('admin/personal/'.$follower->follower_id)}}">{{$follower->follower_id}} </a></td>
+                                                            <td><a href="{{url('admin/users/'.$follower->follower_id)}}">{{$follower->follower_id}} </a></td>
                                                             <td>{{$follower->user_follower->name}}</td>
                                                         </tr>
                                                     @endforeach

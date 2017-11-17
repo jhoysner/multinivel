@@ -25,15 +25,6 @@ class SponsorFollowerTableSeeder extends Seeder
                     'follower_id' =>  $u->id,
                 ]);
 
-                factory(Payment::class)->create([
-
-                    'follower_id' =>  $u->id,
-                    'sponsor_id' =>    1,
-                    'level_id' =>    1,
-                    'payment_amount' => 5,
-                    'payment_confirmation' =>  mt_rand(0, 127),
-                ]);
-
             }
         );
 
@@ -45,15 +36,6 @@ class SponsorFollowerTableSeeder extends Seeder
 
                     'sponsor_id' => 2,
                     'follower_id' =>  $u->id,
-                ]);
-
-                factory(Payment::class)->create([
-
-                    'follower_id' =>  $u->id,
-                    'sponsor_id' =>    2,
-                    'level_id' =>    1,
-                    'payment_amount' => 5,
-                    'payment_confirmation' =>  mt_rand(0, 127),
                 ]);
             }
         )->each(
@@ -68,16 +50,6 @@ class SponsorFollowerTableSeeder extends Seeder
                                 'sponsor_id' => $user[$key]->follower_id,
                                 'follower_id' =>  $u->id,
                             ]);
-
-                            factory(Payment::class)->create([
-
-                                'follower_id' =>  $u->id,
-                                'sponsor_id' =>   $user[$key]->follower_id,
-                                'level_id' =>    1,
-                                'payment_amount' => 5,
-                                'payment_confirmation' =>  mt_rand(0, 127),
-                            ]);
-
                     }
 
                 );
