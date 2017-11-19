@@ -31,6 +31,7 @@ class SponsorFollower extends Model
         return $this->hasOne('App\Payment','follower_id','follower_id');
     }
 
+
     public function payment_followers()
     {
 
@@ -38,9 +39,17 @@ class SponsorFollower extends Model
 
     }
 
-    public static function SponsorFollowrRandom(){
+    public static function nivelAsignation($user)
+    {
 
-        return SponsorFollower::all()->random();
+        $userNivel = SponsorFollower::where('sponsor_id', $user)->get()->pluck('follower_id');
+
+        if ($userNivel->count() == 4){
+
+            $user = User::findOrFail($user)->update(['level_id' => 2]);
+
+        }
+
     }
 
 }

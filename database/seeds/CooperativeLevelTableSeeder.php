@@ -13,7 +13,20 @@ class CooperativeLevelTableSeeder extends Seeder
     {
 
 
+
         DB::table('cooperative_levels')->insert([
+            'id' => 0,
+            'level_name' => 'admin',
+            'tickeck_amount' =>  12.5,
+            'ticket_percent' =>  62.5,
+            'bussiness_amount' => 0 ,
+            'bussiness_percent' => 0,
+            'payout_amount' =>  7.5,
+            'payout_percent' => 37.5,
+        ]);
+
+        DB::table('cooperative_levels')->insert([
+
             'level_name' => 'Classic',
             'tickeck_amount' =>  12.5,
             'ticket_percent' =>  62.5,

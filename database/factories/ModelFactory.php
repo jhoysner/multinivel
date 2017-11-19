@@ -34,7 +34,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) use ($autoIn
     ];
 });
 
-$factory->define(App\SponsorFollower::class, function (Faker\Generator $faker) {
+$factory->define(App\SponsorFollower::class, function (Faker\Generator $faker)  {
 
     return [
         'sponsor_id' => User::all()->random()->id,
@@ -56,7 +56,7 @@ $factory->define(App\Payment::class, function (Faker\Generator $faker) {
 
 function autoIncrement()
 {
-    for ($i = 5; $i < 1000; $i++) {
+    for ($i = 1; $i < 1000; $i++) {
         yield $i;
     }
 }

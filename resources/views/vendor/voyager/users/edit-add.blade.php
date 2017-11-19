@@ -64,11 +64,13 @@
 
                         <div class="row">
                             <div class="container">
+                                @if ($user->cooperative_level)
 
-                                <div class="col-md-4">
-                                    <label style="font-size:20px"><b>Level:</b> {{$user->cooperative_level->level_name}} </label>
-                                </div>
+                                    <div class="col-md-4">
+                                        <label style="font-size:20px"><b>Level:</b> {{$user->cooperative_level->level_name}} </label>
+                                    </div>
 
+                                @endif
                                 <div class="col-md-4">
                                         <label style="font-size:20px"><b>Sponsor:</b>
 
@@ -97,12 +99,14 @@
                                                  <thead>
                                                      <th>ID</th>
                                                      <th>Name</th>
+                                                     <th>Leve</th>
                                                  </thead>
                                                  <tbody>
                                                     @foreach ($user->followers as $follower)
                                                         <tr>
                                                             <td><a href="{{url('admin/users/'.$follower->follower_id)}}">{{$follower->follower_id}} </a></td>
                                                             <td>{{$follower->user_follower->name}}</td>
+                                                            <td>{{$follower->user_follower->cooperative_level->level_name}}</td>
                                                         </tr>
                                                     @endforeach
                                                  </tbody>
@@ -126,6 +130,7 @@
                                                      <th>IdFollower</th>
                                                      <th>Level</th>
                                                      <th>Amount</th>
+                                                     <th>Date</th>
                                                  </thead>
                                                  <tbody>
                                                     @foreach ($user->followers as $follower)
@@ -141,6 +146,9 @@
                                                             </td>
                                                             <td>
                                                                 {{$follower->payment_sponsor->payment_amount}}
+                                                            </td>
+                                                            <td>
+                                                                {{$follower->payment_sponsor->created_at}}
                                                             </td>
                                                         </tr>
                                                     @endforeach

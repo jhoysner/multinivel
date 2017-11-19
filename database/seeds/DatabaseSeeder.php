@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
         $this->call(PermissionRoleTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
 
         $this->call(CooperativeLevelTableSeeder::class);
         $this->call(CountryTableSeeder::class);
@@ -31,6 +32,5 @@ class DatabaseSeeder extends Seeder
         $this->call(SocialAccountTableSeeder::class);
 
 
-        $this->call(UsersTableSeeder::class);
     }
 }
