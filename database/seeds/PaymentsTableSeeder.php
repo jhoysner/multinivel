@@ -28,7 +28,6 @@ class PaymentsTableSeeder extends Seeder
                     'payment_confirmation' =>  mt_rand(0, 127),
                 ]);
 
-                $sponsorfollower->nivelAsignation($sponsorfollower->sponsor_id);
         }
     }
 }

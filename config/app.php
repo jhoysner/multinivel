@@ -181,6 +181,7 @@ return [
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
         TCG\Voyager\VoyagerServiceProvider::class,
         L5Swagger\L5SwaggerServiceProvider::class,
+        'Baum\Providers\BaumServiceProvider',
     ],
 
     /*

@@ -21,11 +21,11 @@ class SponsorFollowerTableSeeder extends Seeder
         ]);
 
 
-        $userCount = 300;
+        $userCount = 100;
 
         function autoIncremento($userCount)
         {
-            for ($i = 2; $i <$userCount; $i++) {
+            for ($i = 2; $i <$userCount+2; $i++) {
                 yield $i;
             }
         }
@@ -50,5 +50,11 @@ class SponsorFollowerTableSeeder extends Seeder
         );
 
 
+        $user = User::all()->pluck('id');
+
+        foreach ($user as $value) {
+
+            SponsorFollower::nivelAsignationAfterCreate($value);
+        }
     }
 }
