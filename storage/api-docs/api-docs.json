@@ -4,7 +4,7 @@
         "title": "Cooperative",
         "version": "1.0.0"
     },
-    "basePath": "JHOYSNER.COM",
+    "basePath": "project-start.app/api/v1",
     "paths": {
         "/test/user/{userId}": {
             "get": {
@@ -119,6 +119,201 @@
                         "description": "Target sponsorfollower.",
                         "required": true,
                         "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Find all User",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Find User",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": "Target User.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update User",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deletes a User",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "UserId",
+                        "in": "path",
+                        "description": "User id to delete",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register User",
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "path",
+                        "description": " name , middle_name ,last_name, email ,password ,password_confirmation,phone_number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user/register/{param}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register User more code Sponsor",
+                "parameters": [
+                    {
+                        "name": "Body",
+                        "in": "path",
+                        "description": " name , middle_name ,last_name, email ,password ,password_confirmation,phone_number",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user/search-sponsor/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Search Sponsor for User",
+                "parameters": [
+                    {
+                        "name": "Id",
+                        "in": "path",
+                        "description": " User ID",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/user/payment-confirm/{iduser}/{param}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Payment confirme",
+                "parameters": [
+                    {
+                        "name": "IdUser",
+                        "in": "path",
+                        "description": " User ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "param",
+                        "in": "path",
+                        "description": " Code confirmation",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {

@@ -24,6 +24,7 @@ class User extends \TCG\Voyager\Models\User
         'phone_number',
         'level_id',
         'token',
+        'token_invitation',
     ];
 
     /**
@@ -74,14 +75,11 @@ class User extends \TCG\Voyager\Models\User
     }
 
     public static function exisPaymentFollower($user){
-
         foreach ($user->followers as  $follower) {
-            if ($follower->payment_sponsor) {
-                return true;
-            }
-            return false;
+            return $follower->payment_sponsor;
         }
     }
+
 
 }
 

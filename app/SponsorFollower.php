@@ -39,67 +39,75 @@ class SponsorFollower extends Model
 
     }
 
-    public static function nivelAsignationAfterCreate($user)
-    {
-
-        $user_count = 0;
 
 
-        $userNivel = SponsorFollower::where('sponsor_id', $user)->get()->pluck('follower_id');
+    public static function levelUser($userId, $maxLevel, $base) {
 
-        if ($userNivel->count() == 4){
+        $leveles = self::generateLevels($maxLevel,$base);
 
-            foreach ($userNivel as  $value) {
-                $user_count++;
+        $follewers = self::getFollowersUser($userId);
 
-                $userNivel = SponsorFollower::where('sponsor_id', $value)->get()->pluck('follower_id');
+        foreach ($leveles as $level) {
 
-                    foreach ($userNivel as  $value) {
+            if ($follewers >= $level['min'] &&  $follewers < $level['max']) {
 
-                        $userNivel = SponsorFollower::where('sponsor_id', $value)->get()->pluck('follower_id');
-                        if ($userNivel->count() == 4){
-                                foreach ($userNivel as  $value) {
-                                    $user_count++;
-                                    $userNivel = SponsorFollower::where('sponsor_id', $value)->get()->pluck('follower_id');
-                                    if ($userNivel->count() == 4){
-                                            foreach ($userNivel as  $value) {
-                                                $user_count++;
-                                                $userNivel = SponsorFollower::where('sponsor_id', $value)->get()->pluck('follower_id');
-                                            }
-                                    }
-                                }
-                        }
-                         $user_count++;
-                    }
+                User::where('id' , $userId)->update(['level_id' =>  $level['level']]);
+
             }
-
         }
-        else{
-
-            $user = User::where('id' , $user)->update(['level_id' => 1]);
-        }
-
-
-        if($user_count >= 4 && $user_count < 20)
-        {
-
-            $user = User::where('id' , $user)->update(['level_id' => 2]);
-        }
-
-        elseif ($user_count >= 20 && $user_count < 84)
-        {
-            $user = User::where('id' , $user)->update(['level_id' => 3]);
-        }
-        elseif ($user_count >= 84 &&  $user_count < 340)
-        {
-            $user = User::where('id' , $user)->update(['level_id' => 4]);
-        }
-        elseif ($user_count >= 340)
-        {
-           $user = User::where('id' , $user)->update(['level_id' => 5]);
-        }
-
-
-
     }
+
+    public static function generateLevels($maxLevel,$base) {
+
+        $leveles = [];
+
+        for ($i = 1; $i <= $maxLevel; $i ++) {
+
+            $leveles[] = [
+                'level' => $i,
+                'min' => self::generatePow($i - 1, $base),
+                'max' => self::generatePow($i, $base)
+            ];
+
+        }
+
+        return $leveles;
+    }
+
+    public static function generatePow($i , $base) {
+
+        if($i == 0) {
+            return 0;
+        }
+
+        if($i == 1) {
+            return $base;
+        }
+
+        return  self::operationPow($base,$i);
+    }
+
+    public static function getFollowersUser($userId) {
+
+        $sponsors = SponsorFollower::where('sponsor_id', $userId)->get();
+
+        $total = count($sponsors);
+
+        foreach ($sponsors as $sponsor) {
+            $total = $total + self::getFollowersUser($sponsor->follower_id);
+        }
+
+        return $total;
+    }
+
+    public static function operationPow ($number , $max) {
+        $total = 1;
+
+        for($i = 1; $i <= $max; $i ++) {
+            $total =  $total * $number ;
+        }
+
+        return $total;
+    }
+
 }

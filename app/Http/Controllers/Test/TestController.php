@@ -149,11 +149,12 @@ class TestController extends Controller
     public function sponsorfollower($id)
     {
 
-        $data  = SponsorFollower::with('user_sponsor','user_follower','payment_sponsor','payment_followers')->get()->find($id);
+        // $data  = SponsorFollower::with('user_sponsor','user_follower','payment_sponsor','payment_followers')->get()->find($id);
 
 
-        return $data;
+        // return $data;
 
+        return [ 'Levels' => SponsorFollower::generateLevels(4,4), 'followers' =>  SponsorFollower::getFollowersUser($id)] ;
     }
 
 

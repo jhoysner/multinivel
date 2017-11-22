@@ -29,6 +29,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) use ($autoIn
         'email' => $faker->unique()->safeEmail,
         'phone_number'=> $faker->phoneNumber,
         'level_id'=>  1,
+        'token_invitation'=>  Uuid::generate()->string,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];

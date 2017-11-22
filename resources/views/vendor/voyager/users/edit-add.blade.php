@@ -86,9 +86,24 @@
                             </div>
                         </div>
                         <br>
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-md-10">
+                                        @if ($user->token_invitation)
+                                                <label style="font-size:20px"><b>Link for Follower:</b></label><br>
+                                                <label style="font-size:20px"> http://project-start.app/v1/user/register/{{$user->token_invitation}} </label>
+                                        @endif
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
                         @if ($user->followers->isNotEmpty())
                         <hr>
-                        <h2>More Information</h2>
+                            <div class="container">
+                                <h2>More Information</h2>
+
+                            </div>
 
                             <div class="row">
                                 <div class="container">
@@ -99,7 +114,7 @@
                                                  <thead>
                                                      <th>ID</th>
                                                      <th>Name</th>
-                                                     <th>Leve</th>
+                                                     <th>Level</th>
                                                  </thead>
                                                  <tbody>
                                                     @foreach ($user->followers as $follower)

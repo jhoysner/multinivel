@@ -15,13 +15,14 @@ class SponsorFollowerTableSeeder extends Seeder
     public function run()
     {
 
+
         factory(SponsorFollower::class)->create([
             'sponsor_id' => 1,
             'follower_id' => 2,
         ]);
 
 
-        $userCount = 100;
+        $userCount = 21;
 
         function autoIncremento($userCount)
         {
@@ -54,7 +55,7 @@ class SponsorFollowerTableSeeder extends Seeder
 
         foreach ($user as $value) {
 
-            SponsorFollower::nivelAsignationAfterCreate($value);
+            SponsorFollower::levelUser($value,4,4);
         }
     }
 }
