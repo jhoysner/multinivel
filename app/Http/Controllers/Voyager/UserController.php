@@ -52,10 +52,6 @@ class UserController extends BaseVoyagerAuthController{
     {
         $user = User::findOrFail($id);
 
-        foreach ($user->followers as  $value) {
-
-
-        }
         return view('vendor.voyager.users.edit-add',compact('user'));
     }
 
